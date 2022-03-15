@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SpeedHelp2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Othot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="date_othot" Type="date" />
+          <Property Name="id_vizov" Type="int" />
+          <Property Name="diagnoz" Type="nchar" MaxLength="10" />
+          <Property Name="is_dead" Type="bit" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="familia" Type="varchar" MaxLength="50" />
+          <Property Name="otch" Type="varchar" MaxLength="50" />
+          <Property Name="date_birth" Type="date" />
+          <Property Name="gender" Type="bit" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="familia" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="otch" Type="nchar" MaxLength="10" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <EntityType Name="Vizov">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="pacient" Type="int" />
+          <Property Name="date_vizov" Type="date" />
+          <Property Name="time_vizov" Type="time" Precision="7" />
+          <Property Name="vrach" Type="int" />
+          <Property Name="symptom" Type="varchar" MaxLength="500" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Othot_Vizov">
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="0..1" />
+          <End Role="Othot" Type="Self.Othot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vizov">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Othot">
+              <PropertyRef Name="id_vizov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vizov_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vizov">
+              <PropertyRef Name="pacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vizov_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vizov">
+              <PropertyRef Name="vrach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SpeedHelp2ModelContainer">
+          <EntitySet Name="Othot" EntityType="Self.Othot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vizov" EntityType="Self.Vizov" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Othot_Vizov" Association="Self.FK_Othot_Vizov">
+            <End Role="Vizov" EntitySet="Vizov" />
+            <End Role="Othot" EntitySet="Othot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vizov_Pacient" Association="Self.FK_Vizov_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Vizov" EntitySet="Vizov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vizov_User" Association="Self.FK_Vizov_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Vizov" EntitySet="Vizov" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpeedHelp2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Othot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="date_othot" Type="DateTime" Precision="0" />
+          <Property Name="id_vizov" Type="Int32" />
+          <Property Name="diagnoz" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="is_dead" Type="Boolean" />
+          <NavigationProperty Name="Vizov" Relationship="Self.FK_Othot_Vizov" FromRole="Othot" ToRole="Vizov" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="familia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="otch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_birth" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="Boolean" />
+          <NavigationProperty Name="Vizov" Relationship="Self.FK_Vizov_Pacient" FromRole="Pacient" ToRole="Vizov" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="familia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="otch" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="role" Type="Int32" />
+          <NavigationProperty Name="Role1" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Vizov" Relationship="Self.FK_Vizov_User" FromRole="User" ToRole="Vizov" />
+        </EntityType>
+        <EntityType Name="Vizov">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="pacient" Type="Int32" />
+          <Property Name="date_vizov" Type="DateTime" Precision="0" />
+          <Property Name="time_vizov" Type="Time" Precision="7" />
+          <Property Name="vrach" Type="Int32" />
+          <Property Name="symptom" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Othot" Relationship="Self.FK_Othot_Vizov" FromRole="Vizov" ToRole="Othot" />
+          <NavigationProperty Name="Pacient1" Relationship="Self.FK_Vizov_Pacient" FromRole="Vizov" ToRole="Pacient" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Vizov_User" FromRole="Vizov" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Othot_Vizov">
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="0..1" />
+          <End Role="Othot" Type="Self.Othot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vizov">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Othot">
+              <PropertyRef Name="id_vizov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vizov_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vizov">
+              <PropertyRef Name="pacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vizov_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vizov">
+              <PropertyRef Name="vrach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SpeedHelp2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Othot" EntityType="Self.Othot" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Vizov" EntityType="Self.Vizov" />
+          <AssociationSet Name="FK_Othot_Vizov" Association="Self.FK_Othot_Vizov">
+            <End Role="Vizov" EntitySet="Vizov" />
+            <End Role="Othot" EntitySet="Othot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vizov_Pacient" Association="Self.FK_Vizov_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Vizov" EntitySet="Vizov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vizov_User" Association="Self.FK_Vizov_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Vizov" EntitySet="Vizov" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SpeedHelp2ModelContainer" CdmEntityContainer="SpeedHelp2Entities">
+          <EntitySetMapping Name="Othot">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.Othot">
+              <MappingFragment StoreEntitySet="Othot">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_othot" ColumnName="date_othot" />
+                <ScalarProperty Name="id_vizov" ColumnName="id_vizov" />
+                <ScalarProperty Name="diagnoz" ColumnName="diagnoz" />
+                <ScalarProperty Name="is_dead" ColumnName="is_dead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacient">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.Pacient">
+              <MappingFragment StoreEntitySet="Pacient">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="familia" ColumnName="familia" />
+                <ScalarProperty Name="otch" ColumnName="otch" />
+                <ScalarProperty Name="date_birth" ColumnName="date_birth" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_role" ColumnName="name_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="familia" ColumnName="familia" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="otch" ColumnName="otch" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vizov">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.Vizov">
+              <MappingFragment StoreEntitySet="Vizov">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pacient" ColumnName="pacient" />
+                <ScalarProperty Name="date_vizov" ColumnName="date_vizov" />
+                <ScalarProperty Name="time_vizov" ColumnName="time_vizov" />
+                <ScalarProperty Name="vrach" ColumnName="vrach" />
+                <ScalarProperty Name="symptom" ColumnName="symptom" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

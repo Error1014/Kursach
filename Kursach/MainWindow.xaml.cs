@@ -27,16 +27,35 @@ namespace Kursach
 
         private void Autorization(object sender, RoutedEventArgs e)
         {
-            if (Login.Text == "rrr" )
+            foreach (var item in App.Context.User)
             {
-                if (Pass.Password == "123")
+                if (Login.Text == item.login.ToString())
                 {
-                    MessageBox.Show("{}{}{}{}{}{}{}");
-                    DispetcherWin DW = new DispetcherWin();
-                    DW.Show();
-                    this.Close();
+                    if (Pass.Password == item.password.ToString())
+                    {
+                        Pass.Password = item.password.ToString();
+                        DispetcherWin DW = new DispetcherWin();
+                        DW.Show();
+                        this.Close();
+                        return;
+                    }
+                    
+                    break;
                 }
             }
+            MessageBox.Show("Неверный логин или пароль");
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            Kursach.SpeedHelp2DataSet speedHelp2DataSet = ((Kursach.SpeedHelp2DataSet)(this.FindResource("speedHelp2DataSet")));
+            // Загрузить данные в таблицу User. Можно изменить этот код как требуется.
+            Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter speedHelp2DataSetUserTableAdapter = new Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter();
+            speedHelp2DataSetUserTableAdapter.Fill(speedHelp2DataSet.User);
+            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
+            userViewSource.View.MoveCurrentToFirst();
         }
     }
 }
