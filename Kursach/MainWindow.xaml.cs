@@ -24,5 +24,19 @@ namespace Kursach
         {
             InitializeComponent();
         }
+
+        private void Autorization(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text == "rrr" )
+            {
+                if (Pass.Password == "123")
+                {
+                    MessageBox.Show("{}{}{}{}{}{}{}");
+                    DispetcherWin DW = new DispetcherWin();
+                    DW.Show();
+                    this.Close();
+                }
+            }
+        }
     }
 }
