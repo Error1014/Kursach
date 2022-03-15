@@ -39,7 +39,6 @@ namespace Kursach
                         this.Close();
                         return;
                     }
-                    
                     break;
                 }
             }

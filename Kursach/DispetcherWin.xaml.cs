@@ -23,5 +23,23 @@ namespace Kursach
         {
             InitializeComponent();
         }
+
+        private void AddNewVizov(object sender, RoutedEventArgs e)
+        {
+            Pacient pacient = new Pacient();
+            Vizov vizov = new Vizov();
+            pacient.familia = Familia.Text;
+            pacient.name = Name.Text;
+            pacient.otch = Otch.Text;
+            App.Context.Pacient.Add(pacient);
+            vizov.phone = Phone.Text;
+            vizov.adres = Adres.Text;
+            vizov.symptom = Symptom.Document.ToString();
+            vizov.pacient = pacient.id;
+            vizov.date_vizov = DateTime.Now;
+            //vizov.time_vizov = DateTime.;
+            App.Context.Vizov.Add(vizov);
+            App.Context.SaveChanges();
+        }
     }
 }

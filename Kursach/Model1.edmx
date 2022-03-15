@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date_othot" Type="date" />
           <Property Name="id_vizov" Type="int" />
           <Property Name="diagnoz" Type="nchar" MaxLength="10" />
@@ -19,9 +19,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="familia" Type="varchar" MaxLength="50" />
+          <Property Name="familia" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="otch" Type="varchar" MaxLength="50" />
           <Property Name="date_birth" Type="date" />
           <Property Name="gender" Type="bit" />
@@ -59,13 +59,15 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pacient" Type="int" />
           <Property Name="date_vizov" Type="date" />
           <Property Name="time_vizov" Type="time" Precision="7" />
           <Property Name="vrach" Type="int" />
           <Property Name="symptom" Type="varchar" MaxLength="500" />
           <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="adres" Type="varchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_Othot_Vizov">
           <End Role="Vizov" Type="Self.Vizov" Multiplicity="0..1" />
@@ -148,7 +150,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date_othot" Type="DateTime" Precision="0" />
           <Property Name="id_vizov" Type="Int32" />
           <Property Name="diagnoz" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -159,9 +161,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="familia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="familia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="otch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="date_birth" Type="DateTime" Precision="0" />
           <Property Name="gender" Type="Boolean" />
@@ -203,13 +205,15 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pacient" Type="Int32" />
           <Property Name="date_vizov" Type="DateTime" Precision="0" />
           <Property Name="time_vizov" Type="Time" Precision="7" />
           <Property Name="vrach" Type="Int32" />
           <Property Name="symptom" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Othot" Relationship="Self.FK_Othot_Vizov" FromRole="Vizov" ToRole="Othot" />
           <NavigationProperty Name="Pacient1" Relationship="Self.FK_Vizov_Pacient" FromRole="Vizov" ToRole="Pacient" />
           <NavigationProperty Name="User" Relationship="Self.FK_Vizov_User" FromRole="Vizov" ToRole="User" />
@@ -357,6 +361,8 @@
                 <ScalarProperty Name="vrach" ColumnName="vrach" />
                 <ScalarProperty Name="symptom" ColumnName="symptom" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

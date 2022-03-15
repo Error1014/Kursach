@@ -26,18 +26,18 @@
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="500" Margin="25,0,0,0" >
                 <TextBlock Text="Добавить вызов" FontSize="30" FontWeight="Bold" Margin="0,0,0,20"/>
-                <TextBox FontSize="20" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignTextBox}"/>
-                <TextBox FontSize="20" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignTextBox}"/>
-                <TextBox FontSize="20" materialDesign:HintAssist.Hint="Отчество" Style="{StaticResource MaterialDesignTextBox}"/>
-                <TextBox FontSize="20" materialDesign:HintAssist.Hint="Телефон" Style="{StaticResource MaterialDesignTextBox}"/>
-                <TextBox FontSize="20" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox x:Name="Familia" FontSize="20" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox x:Name="Name" FontSize="20" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox x:Name="Otch" FontSize="20" materialDesign:HintAssist.Hint="Отчество" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox x:Name="Phone" FontSize="20" materialDesign:HintAssist.Hint="Телефон" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox x:Name="Adres" FontSize="20" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignTextBox}"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" MaxWidth="500" Margin="10,60,0,0" >
-                <RichTextBox FontSize="20" materialDesign:HintAssist.Hint="Симптомы" Style="{StaticResource MaterialDesignRichTextBox}" Width="500"/>
+                <RichTextBox x:Name="Symptom" FontSize="20" materialDesign:HintAssist.Hint="Симптомы" Style="{StaticResource MaterialDesignRichTextBox}" Width="500"/>
             </StackPanel>
             <Grid  Margin="100" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
                 <Button HorizontalAlignment="Left" Content="Отмена" Width="150" Height="35"/>
-                <Button HorizontalAlignment="Right" Content="Добавить" Width="150" Height="35"/>
+                <Button HorizontalAlignment="Right" Content="Добавить" Width="150" Height="35" Click="AddNewVizov"/>
             </Grid>
         </Grid>
     </Grid>

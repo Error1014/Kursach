@@ -27,6 +27,8 @@ namespace Kursach
         public Nullable<int> vrach { get; set; }
         public string symptom { get; set; }
         public string type { get; set; }
+        public string phone { get; set; }
+        public string adres { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Othot> Othot { get; set; }
