@@ -19,9 +19,13 @@ namespace Kursach
     /// </summary>
     public partial class DispetcherWin : Window
     {
+        private User _curentUser = new User();
+
         public DispetcherWin()
         {
             InitializeComponent();
+            DataContext = _curentUser;
+            listVrach.ItemsSource = App.Context.User.ToList();
         }
 
         private void AddNewVizov(object sender, RoutedEventArgs e)
@@ -34,12 +38,34 @@ namespace Kursach
             App.Context.Pacient.Add(pacient);
             vizov.phone = Phone.Text;
             vizov.adres = Adres.Text;
-            vizov.symptom = Symptom.Document.ToString();
+            //vizov.symptom = Symptom.
             vizov.pacient = pacient.id;
             vizov.date_vizov = DateTime.Now;
-            //vizov.time_vizov = DateTime.;
+            vizov.time_vizov = new TimeSpan();
+            //vizov.vrach = vrachComboBox.
             App.Context.Vizov.Add(vizov);
+            Familia.Text = "";
+            Name.Text = "";
+            Otch.Text = "";
+            
+            Phone.Text = "";
+            Adres.Text = "";
             App.Context.SaveChanges();
+            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            Kursach.SpeedHelp2DataSet speedHelp2DataSet = ((Kursach.SpeedHelp2DataSet)(this.FindResource("speedHelp2DataSet")));
+            // Загрузить данные в таблицу User. Можно изменить этот код как требуется.
+            Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter speedHelp2DataSetUserTableAdapter = new Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter();
+            speedHelp2DataSetUserTableAdapter.Fill(speedHelp2DataSet.User);
+            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
+            userViewSource.View.MoveCurrentToFirst();
+            System.Windows.Data.CollectionViewSource vizovViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vizovViewSource")));
+            // Загрузите данные, установив свойство CollectionViewSource.Source:
+            // vizovViewSource.Source = [универсальный источник данных]
         }
     }
 }
