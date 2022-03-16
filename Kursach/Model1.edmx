@@ -61,13 +61,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pacient" Type="int" />
-          <Property Name="date_vizov" Type="date" />
-          <Property Name="time_vizov" Type="time" Precision="7" />
+          <Property Name="date_vizov" Type="datetime" />
           <Property Name="vrach" Type="int" />
           <Property Name="symptom" Type="varchar" MaxLength="500" />
           <Property Name="type" Type="varchar" MaxLength="50" />
           <Property Name="phone" Type="varchar" MaxLength="50" />
           <Property Name="adres" Type="varchar" MaxLength="100" />
+          <Property Name="isEnd" Type="bit" />
         </EntityType>
         <Association Name="FK_Othot_Vizov">
           <End Role="Vizov" Type="Self.Vizov" Multiplicity="0..1" />
@@ -207,13 +207,13 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pacient" Type="Int32" />
-          <Property Name="date_vizov" Type="DateTime" Precision="0" />
-          <Property Name="time_vizov" Type="Time" Precision="7" />
+          <Property Name="date_vizov" Type="DateTime" Precision="3" />
           <Property Name="vrach" Type="Int32" />
           <Property Name="symptom" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isEnd" Type="Boolean" />
           <NavigationProperty Name="Othot" Relationship="Self.FK_Othot_Vizov" FromRole="Vizov" ToRole="Othot" />
           <NavigationProperty Name="Pacient1" Relationship="Self.FK_Vizov_Pacient" FromRole="Vizov" ToRole="Pacient" />
           <NavigationProperty Name="User" Relationship="Self.FK_Vizov_User" FromRole="Vizov" ToRole="User" />
@@ -357,12 +357,12 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="pacient" ColumnName="pacient" />
                 <ScalarProperty Name="date_vizov" ColumnName="date_vizov" />
-                <ScalarProperty Name="time_vizov" ColumnName="time_vizov" />
                 <ScalarProperty Name="vrach" ColumnName="vrach" />
                 <ScalarProperty Name="symptom" ColumnName="symptom" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="isEnd" ColumnName="isEnd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

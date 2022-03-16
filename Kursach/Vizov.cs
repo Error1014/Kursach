@@ -23,12 +23,12 @@ namespace Kursach
         public int id { get; set; }
         public Nullable<int> pacient { get; set; }
         public Nullable<System.DateTime> date_vizov { get; set; }
-        public Nullable<System.TimeSpan> time_vizov { get; set; }
         public Nullable<int> vrach { get; set; }
         public string symptom { get; set; }
         public string type { get; set; }
         public string phone { get; set; }
         public string adres { get; set; }
+        public Nullable<bool> isEnd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Othot> Othot { get; set; }

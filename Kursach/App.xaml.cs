@@ -18,8 +18,6 @@ namespace Kursach
         void Application_Start(object sender, StartupEventArgs args)
         {
             Context = new SpeedHelp2Entities();
-
-
         }
     }
 }

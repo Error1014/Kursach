@@ -56,5 +56,11 @@ namespace Kursach
             System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
             userViewSource.View.MoveCurrentToFirst();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DispetcherWin DW = new DispetcherWin();
+            DW.Show();
+        }
     }
 }

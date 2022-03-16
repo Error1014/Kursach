@@ -17,6 +17,7 @@
             <TextBox x:Name="Login" FontSize="20" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFilledTextBox}" Width="338" Margin="20"/>
             <PasswordBox x:Name="Pass" FontSize="20" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFilledPasswordBox}" Width="338" Margin="20"/>
             <Button MaxWidth="200" Content="Войти" Margin="20" Click="Autorization"/>
+            <Button MaxWidth="200" Content="Войти по быстрому" Margin="20" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

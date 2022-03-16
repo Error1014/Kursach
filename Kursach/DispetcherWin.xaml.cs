@@ -38,11 +38,14 @@ namespace Kursach
             App.Context.Pacient.Add(pacient);
             vizov.phone = Phone.Text;
             vizov.adres = Adres.Text;
-            //vizov.symptom = Symptom.
+
+            //int selectedVrach = (int)listVrach.SelectedValue; 
+            //vizov.symptom = Symptom.Lines
+            vizov.vrach = (int)listVrach.SelectedValue;
+            //vizov.vrach = listVrach.SelectedItem;
             vizov.pacient = pacient.id;
             vizov.date_vizov = DateTime.Now;
-            vizov.time_vizov = new TimeSpan();
-            //vizov.vrach = vrachComboBox.
+            
             App.Context.Vizov.Add(vizov);
             Familia.Text = "";
             Name.Text = "";
