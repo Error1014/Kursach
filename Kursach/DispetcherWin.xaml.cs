@@ -25,7 +25,14 @@ namespace Kursach
         {
             InitializeComponent();
             DataContext = _curentUser;
-            listVrach.ItemsSource = App.Context.User.ToList();
+            List<User> u = new List<User>();
+            foreach (var item in App.Context.User)
+            {
+                u.Add(item);
+            }
+            listVrach.ItemsSource = from p in u
+                                    where p.role == 1
+                                    select p;
         }
 
         private void AddNewVizov(object sender, RoutedEventArgs e)
@@ -38,7 +45,7 @@ namespace Kursach
             App.Context.Pacient.Add(pacient);
             vizov.phone = Phone.Text;
             vizov.adres = Adres.Text;
-
+            vizov.isEnd = false;
             //int selectedVrach = (int)listVrach.SelectedValue; 
             //vizov.symptom = Symptom.Lines
             vizov.vrach = (int)listVrach.SelectedValue;
