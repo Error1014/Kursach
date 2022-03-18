@@ -19,6 +19,7 @@ namespace Kursach
         public Nullable<int> id_vizov { get; set; }
         public string diagnoz { get; set; }
         public Nullable<bool> is_dead { get; set; }
+        public Nullable<bool> is_hospitalisir { get; set; }
     
         public virtual Vizov Vizov { get; set; }
     }

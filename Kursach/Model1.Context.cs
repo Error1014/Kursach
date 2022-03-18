@@ -29,6 +29,7 @@ namespace Kursach
         public virtual DbSet<Pacient> Pacient { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<type_vizov> type_vizov { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Vizov> Vizov { get; set; }
     }

@@ -33,6 +33,7 @@ namespace Kursach
             listVrach.ItemsSource = from p in u
                                     where p.role == 1
                                     select p;
+            listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
         }
 
         private void AddNewVizov(object sender, RoutedEventArgs e)
@@ -46,10 +47,9 @@ namespace Kursach
             vizov.phone = Phone.Text;
             vizov.adres = Adres.Text;
             vizov.isEnd = false;
-            //int selectedVrach = (int)listVrach.SelectedValue; 
-            //vizov.symptom = Symptom.Lines
+            vizov.symptom = Symptom.Text;
             vizov.vrach = (int)listVrach.SelectedValue;
-            //vizov.vrach = listVrach.SelectedItem;
+            vizov.type = (int)listTypeVizov.SelectedValue;
             vizov.pacient = pacient.id;
             vizov.date_vizov = DateTime.Now;
             

@@ -14,6 +14,7 @@
           <Property Name="id_vizov" Type="int" />
           <Property Name="diagnoz" Type="nchar" MaxLength="10" />
           <Property Name="is_dead" Type="bit" />
+          <Property Name="is_hospitalisir" Type="bit" />
         </EntityType>
         <EntityType Name="Pacient">
           <Key>
@@ -43,6 +44,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="type_vizov">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -64,10 +72,11 @@
           <Property Name="date_vizov" Type="datetime" />
           <Property Name="vrach" Type="int" />
           <Property Name="symptom" Type="varchar" MaxLength="500" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="int" />
           <Property Name="phone" Type="varchar" MaxLength="50" />
           <Property Name="adres" Type="varchar" MaxLength="100" />
           <Property Name="isEnd" Type="bit" />
+          <Property Name="age" Type="float" />
         </EntityType>
         <Association Name="FK_Othot_Vizov">
           <End Role="Vizov" Type="Self.Vizov" Multiplicity="0..1" />
@@ -105,6 +114,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vizov_type_vizov">
+          <End Role="type_vizov" Type="Self.type_vizov" Multiplicity="0..1" />
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_vizov">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vizov">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vizov_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
@@ -122,6 +143,7 @@
           <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_vizov" EntityType="Self.type_vizov" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vizov" EntityType="Self.Vizov" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Othot_Vizov" Association="Self.FK_Othot_Vizov">
@@ -134,6 +156,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Vizov_Pacient" Association="Self.FK_Vizov_Pacient">
             <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Vizov" EntitySet="Vizov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vizov_type_vizov" Association="Self.FK_Vizov_type_vizov">
+            <End Role="type_vizov" EntitySet="type_vizov" />
             <End Role="Vizov" EntitySet="Vizov" />
           </AssociationSet>
           <AssociationSet Name="FK_Vizov_User" Association="Self.FK_Vizov_User">
@@ -155,6 +181,7 @@
           <Property Name="id_vizov" Type="Int32" />
           <Property Name="diagnoz" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="is_dead" Type="Boolean" />
+          <Property Name="is_hospitalisir" Type="Boolean" />
           <NavigationProperty Name="Vizov" Relationship="Self.FK_Othot_Vizov" FromRole="Othot" ToRole="Vizov" />
         </EntityType>
         <EntityType Name="Pacient">
@@ -187,6 +214,14 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="type_vizov">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vizov" Relationship="Self.FK_Vizov_type_vizov" FromRole="type_vizov" ToRole="Vizov" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -210,12 +245,14 @@
           <Property Name="date_vizov" Type="DateTime" Precision="3" />
           <Property Name="vrach" Type="Int32" />
           <Property Name="symptom" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" />
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="isEnd" Type="Boolean" />
+          <Property Name="age" Type="Double" />
           <NavigationProperty Name="Othot" Relationship="Self.FK_Othot_Vizov" FromRole="Vizov" ToRole="Othot" />
           <NavigationProperty Name="Pacient1" Relationship="Self.FK_Vizov_Pacient" FromRole="Vizov" ToRole="Pacient" />
+          <NavigationProperty Name="type_vizov" Relationship="Self.FK_Vizov_type_vizov" FromRole="Vizov" ToRole="type_vizov" />
           <NavigationProperty Name="User" Relationship="Self.FK_Vizov_User" FromRole="Vizov" ToRole="User" />
         </EntityType>
         <Association Name="FK_Othot_Vizov">
@@ -254,6 +291,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vizov_type_vizov">
+          <End Role="type_vizov" Type="Self.type_vizov" Multiplicity="0..1" />
+          <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_vizov">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vizov">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vizov_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Vizov" Type="Self.Vizov" Multiplicity="*" />
@@ -271,6 +320,7 @@
           <EntitySet Name="Pacient" EntityType="Self.Pacient" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="type_vizov" EntityType="Self.type_vizov" />
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="Vizov" EntityType="Self.Vizov" />
           <AssociationSet Name="FK_Othot_Vizov" Association="Self.FK_Othot_Vizov">
@@ -284,6 +334,10 @@
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vizov_type_vizov" Association="Self.FK_Vizov_type_vizov">
+            <End Role="type_vizov" EntitySet="type_vizov" />
+            <End Role="Vizov" EntitySet="Vizov" />
           </AssociationSet>
           <AssociationSet Name="FK_Vizov_User" Association="Self.FK_Vizov_User">
             <End Role="User" EntitySet="User" />
@@ -304,6 +358,7 @@
                 <ScalarProperty Name="id_vizov" ColumnName="id_vizov" />
                 <ScalarProperty Name="diagnoz" ColumnName="diagnoz" />
                 <ScalarProperty Name="is_dead" ColumnName="is_dead" />
+                <ScalarProperty Name="is_hospitalisir" ColumnName="is_hospitalisir" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -338,6 +393,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="type_vizov">
+            <EntityTypeMapping TypeName="SpeedHelp2Model.type_vizov">
+              <MappingFragment StoreEntitySet="type_vizov">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="SpeedHelp2Model.User">
               <MappingFragment StoreEntitySet="User">
@@ -363,6 +426,7 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="adres" ColumnName="adres" />
                 <ScalarProperty Name="isEnd" ColumnName="isEnd" />
+                <ScalarProperty Name="age" ColumnName="age" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

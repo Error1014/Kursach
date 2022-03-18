@@ -37,6 +37,7 @@
                 <TextBox x:Name="Phone" FontSize="20" materialDesign:HintAssist.Hint="Телефон" Style="{StaticResource MaterialDesignTextBox}"/>
                 <TextBox x:Name="Adres" FontSize="20" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignTextBox}"/>
                 <ComboBox x:Name="listVrach" FontSize="20" materialDesign:HintAssist.Hint="Назначить врача" DisplayMemberPath="familia" SelectedValuePath="id" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignComboBox}"/>
+                <ComboBox x:Name="listTypeVizov" FontSize="20" materialDesign:HintAssist.Hint="Тип вызова" DisplayMemberPath="type" SelectedValuePath="id" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignComboBox}"/>
                 <Grid x:Name="grid1" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>

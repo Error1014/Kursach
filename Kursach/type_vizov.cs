@@ -12,29 +12,18 @@ namespace Kursach
     using System;
     using System.Collections.Generic;
     
-    public partial class Vizov
+    public partial class type_vizov
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Vizov()
+        public type_vizov()
         {
-            this.Othot = new HashSet<Othot>();
+            this.Vizov = new HashSet<Vizov>();
         }
     
         public int id { get; set; }
-        public Nullable<int> pacient { get; set; }
-        public Nullable<System.DateTime> date_vizov { get; set; }
-        public Nullable<int> vrach { get; set; }
-        public string symptom { get; set; }
-        public Nullable<int> type { get; set; }
-        public string phone { get; set; }
-        public string adres { get; set; }
-        public Nullable<bool> isEnd { get; set; }
-        public Nullable<double> age { get; set; }
+        public string type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Othot> Othot { get; set; }
-        public virtual Pacient Pacient1 { get; set; }
-        public virtual type_vizov type_vizov { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<Vizov> Vizov { get; set; }
     }
 }
