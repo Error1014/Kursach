@@ -4,19 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7cc96f3cc3914524b02528da9191b189" Name="Diagram1">
-        <EntityTypeShape EntityType="SpeedHelp2Model.Othot" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpeedHelp2Model.Pacient" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpeedHelp2Model.Role" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpeedHelp2Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpeedHelp2Model.type_vizov" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpeedHelp2Model.User" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SpeedHelp2Model.Vizov" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="21ba841538a544bfad307be0c8aeee62" Name="Diagram1">
+        <EntityTypeShape EntityType="SpeedHelp2Model.Othot" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.Pacient" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.Role" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.type_vizov" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.User" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.user_vizov" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpeedHelp2Model.Vizov" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="SpeedHelp2Model.FK_Othot_Vizov" ManuallyRouted="false" />
         <AssociationConnector Association="SpeedHelp2Model.FK_Vizov_Pacient" ManuallyRouted="false" />
         <AssociationConnector Association="SpeedHelp2Model.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="SpeedHelp2Model.FK_Vizov_type_vizov" ManuallyRouted="false" />
-        <AssociationConnector Association="SpeedHelp2Model.FK_Vizov_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SpeedHelp2Model.FK_user_vizov_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SpeedHelp2Model.FK_user_vizov_Vizov" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

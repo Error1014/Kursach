@@ -18,6 +18,7 @@
             <PasswordBox x:Name="Pass" FontSize="20" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFilledPasswordBox}" Width="338" Margin="20"/>
             <Button MaxWidth="200" Content="Войти" Margin="20" Click="Autorization"/>
             <Button MaxWidth="200" Content="Войти по быстрому" Margin="20" Click="Button_Click"/>
+            <Button MaxWidth="200" Content="Войти по быстрому врачу" Margin="20" Click="Button_Click2"/>
         </StackPanel>
     </Grid>
 </Window>

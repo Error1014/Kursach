@@ -24,16 +24,20 @@ namespace Kursach
         public DispetcherWin()
         {
             InitializeComponent();
-            DataContext = _curentUser;
             List<User> u = new List<User>();
             foreach (var item in App.Context.User)
             {
                 u.Add(item);
             }
-            listVrach.ItemsSource = from p in u
-                                    where p.role == 1
-                                    select p;
+            GetListVrach();
             listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
+        }
+
+        public void GetListVrach()
+        {
+            listVrach.ItemsSource = from p in App.Context.User.ToList()
+                                    where (p.role == 1) && (p.is_free == true)
+                                    select p;
         }
 
         private void AddNewVizov(object sender, RoutedEventArgs e)
@@ -45,24 +49,67 @@ namespace Kursach
             pacient.otch = Otch.Text;
             App.Context.Pacient.Add(pacient);
             vizov.phone = Phone.Text;
-            vizov.adres = Adres.Text;
+            if (string.IsNullOrWhiteSpace(Adres.Text) == false)
+            {
+                vizov.adres = Adres.Text;
+            }
+            else
+            {
+                MessageBox.Show("Куда врачей посылаешь?");
+                return;
+            }
             vizov.isEnd = false;
+            
             vizov.symptom = Symptom.Text;
-            vizov.vrach = (int)listVrach.SelectedValue;
-            vizov.type = (int)listTypeVizov.SelectedValue;
+
+            if (string.IsNullOrWhiteSpace(Age.Text) == false)
+            {
+                pacient.age = Age.Text;
+            }
+            else
+            {
+                pacient.age = null;
+            }
+            int indexUser = 0;
+            if (listVrach.SelectedValue == null)
+            {
+                MessageBox.Show("Укажите врача");
+                return;
+            }
+            else
+            {
+                vizov.vrach = (int)listVrach.SelectedValue;
+                indexUser = listVrach.SelectedIndex;
+            }
+            User selectUser = (User)listVrach.Items[indexUser];
+            selectUser.is_free = false;
+            GetListVrach();
+            if (listTypeVizov.SelectedValue == null)
+            {
+                MessageBox.Show("Укажите тип вызова");
+                return;
+            }
+            else
+            {
+                vizov.type = (int)listTypeVizov.SelectedValue;
+            }
+            user_vizov uv = new user_vizov();
+            uv.id_user = selectUser.id;
+            uv.id_vizov = vizov.id;
             vizov.pacient = pacient.id;
             vizov.date_vizov = DateTime.Now;
-            
             App.Context.Vizov.Add(vizov);
+            App.Context.user_vizov.Add(uv);
             Familia.Text = "";
             Name.Text = "";
             Otch.Text = "";
-            
             Phone.Text = "";
             Adres.Text = "";
+            Age.Text = "";
             App.Context.SaveChanges();
             
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -77,5 +124,6 @@ namespace Kursach
             // Загрузите данные, установив свойство CollectionViewSource.Source:
             // vizovViewSource.Source = [универсальный источник данных]
         }
+
     }
 }

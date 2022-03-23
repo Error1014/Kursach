@@ -31,6 +31,7 @@ namespace Kursach
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<type_vizov> type_vizov { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<user_vizov> user_vizov { get; set; }
         public virtual DbSet<Vizov> Vizov { get; set; }
     }
 }

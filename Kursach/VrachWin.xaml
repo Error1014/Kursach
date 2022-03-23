@@ -1,0 +1,85 @@
+﻿<Window x:Class="Kursach.VrachWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursach"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="VrachWin" Height="800" Width="1500">
+    <Window.Resources>
+        <local:SpeedHelp2DataSet x:Key="speedHelp2DataSet"/>
+        <CollectionViewSource x:Key="userViewSource" Source="{Binding User, Source={StaticResource speedHelp2DataSet}}"/>
+        <CollectionViewSource x:Key="vizovViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Vizov}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid Background="AliceBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Background="Aquamarine" Grid.Column="0" Grid.Row="1" >
+                <Button Content="стр1" Margin="0,10,0,5"/>
+                <Button Content="стр1" Margin="0,10,0,5"/>
+                <Button Content="стр1" Margin="0,10,0,5"/>
+                <Button Content="стр1" Margin="0,10,0,5"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="500" Margin="25,0,0,0" Panel.ZIndex="0" DataContext="{StaticResource userViewSource}" >
+                <TextBlock Text="Новый вызов" FontSize="30" FontWeight="Bold" Margin="0,0,0,20"/>
+                <TextBlock x:Name="textBlockFamilia" Text="Фамилия" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockName" Text="Имя" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockOtch" Text="Отчество" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockPhone" Text="Телефон" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockAge" Text="Возраст" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockType" Text="Тип вызова" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+
+                <Grid x:Name="grid1" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                </Grid>
+                <Grid x:Name="grid2" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="155,0,0,0" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                </Grid>
+                <Grid x:Name="grid3" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    </Grid>
+                <TextBlock x:Name="textBlockAdres" Text="Адрес" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" MaxWidth="500" Margin="10,60,0,0" >
+                <TextBlock x:Name="textBlockSymptom" FontSize="20" Text="Симптомы" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBlock}" Width="500"/>
+            </StackPanel>
+            <Grid  Margin="350,0,99.8,100.4" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btn" HorizontalAlignment="Right" Content="Принять вызов" Tag="0" Width="150" Height="35"  Grid.RowSpan="2" Click="AcceptVizov"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

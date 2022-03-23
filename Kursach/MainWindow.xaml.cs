@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,8 +36,18 @@ namespace Kursach
                     {
                         Pass.Password = item.password.ToString();
                         DispetcherWin DW = new DispetcherWin();
-                        DW.Show();
-                        this.Close();
+                        VrachWin VW = new VrachWin(item);
+                        if (item.role == 2)
+                        {
+                            DW.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            VW.Show();
+                            this.Close();
+                        }
+                        
                         return;
                     }
                     break;
@@ -61,6 +72,19 @@ namespace Kursach
         {
             DispetcherWin DW = new DispetcherWin();
             DW.Show();
+        }
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            var us = from u in App.Context.User
+                     where u.id == 3
+                     select u;
+            User user = new User();
+            foreach (var item in us)
+            {
+                user = item;
+            }
+            VrachWin VW = new VrachWin(user);
+            VW.Show();
         }
     }
 }

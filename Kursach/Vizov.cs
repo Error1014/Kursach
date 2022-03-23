@@ -18,6 +18,7 @@ namespace Kursach
         public Vizov()
         {
             this.Othot = new HashSet<Othot>();
+            this.user_vizov = new HashSet<user_vizov>();
         }
     
         public int id { get; set; }
@@ -29,12 +30,12 @@ namespace Kursach
         public string phone { get; set; }
         public string adres { get; set; }
         public Nullable<bool> isEnd { get; set; }
-        public Nullable<double> age { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Othot> Othot { get; set; }
         public virtual Pacient Pacient1 { get; set; }
         public virtual type_vizov type_vizov { get; set; }
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user_vizov> user_vizov { get; set; }
     }
 }

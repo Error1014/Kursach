@@ -12,22 +12,13 @@ namespace Kursach
     using System;
     using System.Collections.Generic;
     
-    public partial class Pacient
+    public partial class user_vizov
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pacient()
-        {
-            this.Vizov = new HashSet<Vizov>();
-        }
-    
         public int id { get; set; }
-        public string name { get; set; }
-        public string familia { get; set; }
-        public string otch { get; set; }
-        public Nullable<bool> gender { get; set; }
-        public string age { get; set; }
+        public Nullable<int> id_user { get; set; }
+        public Nullable<int> id_vizov { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vizov> Vizov { get; set; }
+        public virtual User User { get; set; }
+        public virtual Vizov Vizov { get; set; }
     }
 }

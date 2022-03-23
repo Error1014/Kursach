@@ -17,7 +17,7 @@ namespace Kursach
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Vizov = new HashSet<Vizov>();
+            this.user_vizov = new HashSet<user_vizov>();
         }
     
         public int id { get; set; }
@@ -27,9 +27,10 @@ namespace Kursach
         public string name { get; set; }
         public string otch { get; set; }
         public Nullable<int> role { get; set; }
+        public Nullable<bool> is_free { get; set; }
     
         public virtual Role Role1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vizov> Vizov { get; set; }
+        public virtual ICollection<user_vizov> user_vizov { get; set; }
     }
 }

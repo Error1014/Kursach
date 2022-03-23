@@ -34,6 +34,7 @@
                 <TextBox x:Name="Familia" FontSize="20" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignTextBox}"/>
                 <TextBox x:Name="Name" FontSize="20" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignTextBox}"/>
                 <TextBox x:Name="Otch" FontSize="20" materialDesign:HintAssist.Hint="Отчество" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox x:Name="Age" FontSize="20" materialDesign:HintAssist.Hint="Возраст" Style="{StaticResource MaterialDesignTextBox}"/>
                 <TextBox x:Name="Phone" FontSize="20" materialDesign:HintAssist.Hint="Телефон" Style="{StaticResource MaterialDesignTextBox}"/>
                 <TextBox x:Name="Adres" FontSize="20" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignTextBox}"/>
                 <ComboBox x:Name="listVrach" FontSize="20" materialDesign:HintAssist.Hint="Назначить врача" DisplayMemberPath="familia" SelectedValuePath="id" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignComboBox}"/>
