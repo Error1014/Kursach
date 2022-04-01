@@ -72,6 +72,7 @@ namespace Kursach
         {
             DispetcherWin DW = new DispetcherWin();
             DW.Show();
+            this.Close();
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
@@ -85,6 +86,7 @@ namespace Kursach
             }
             VrachWin VW = new VrachWin(user);
             VW.Show();
+            this.Close();
         }
     }
 }

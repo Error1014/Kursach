@@ -10,7 +10,7 @@
     <Window.Resources>
         <local:SpeedHelp2DataSet x:Key="speedHelp2DataSet"/>
         <CollectionViewSource x:Key="userViewSource" Source="{Binding User, Source={StaticResource speedHelp2DataSet}}"/>
-        <CollectionViewSource x:Key="vizovViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Vizov}, CreateList=True}"/>
+        <CollectionViewSource x:Key="vizovViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Vizov}}"/>
     </Window.Resources>
     <Grid>
         <Grid Background="AliceBlue">
@@ -23,6 +23,9 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <StackPanel Grid.ColumnSpan="3" Background="LightBlue" >
+                <Button Content="Выход" Click="Exit" HorizontalAlignment="Right"/>
+            </StackPanel>
             <StackPanel Background="Aquamarine" Grid.Column="0" Grid.Row="1" >
                 <Button Content="стр1" Margin="0,10,0,5"/>
                 <Button Content="стр1" Margin="0,10,0,5"/>
@@ -30,13 +33,14 @@
                 <Button Content="стр1" Margin="0,10,0,5"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="500" Margin="25,0,0,0" Panel.ZIndex="0" DataContext="{StaticResource userViewSource}" >
-                <TextBlock Text="Новый вызов" FontSize="30" FontWeight="Bold" Margin="0,0,0,20"/>
-                <TextBlock x:Name="textBlockFamilia" Text="Фамилия" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBlock x:Name="textBlockName" Text="Имя" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBlock x:Name="textBlockOtch" Text="Отчество" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBlock x:Name="textBlockPhone" Text="Телефон" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBlock x:Name="textBlockAge" Text="Возраст" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                <TextBlock x:Name="textBlockType" Text="Тип вызова" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock Text="Вызов" FontSize="30" FontWeight="Bold" Margin="0,0,0,20"/>
+                <TextBlock x:Name="info" Text="У вас нет вызова" FontSize="25" FontWeight="Bold" Margin="0,-20,0,20"/>
+                <TextBlock x:Name="textBlockFamilia" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockName" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockOtch" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockAge" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockPhone" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockType" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
 
                 <Grid x:Name="grid1" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -67,11 +71,15 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     </Grid>
-                <TextBlock x:Name="textBlockAdres" Text="Адрес" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBlock x:Name="textBlockAdres" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
 
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" MaxWidth="500" Margin="10,60,0,0" >
-                <TextBlock x:Name="textBlockSymptom" FontSize="20" Text="Симптомы" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBlock}" Width="500"/>
+                <TextBlock x:Name="textBlockSymptom" FontSize="20" Text="" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBlock}" Width="500"/>
+                <TextBox x:Name="textBlockDiagnoz" FontSize="20" Text="" materialDesign:HintAssist.Hint="Диагноз" Visibility="Hidden" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBox}" Width="500"/>
+           
+                <CheckBox x:Name="checkHospital" Content="Гостопилизирован" Style="{StaticResource MaterialDesignAccentCheckBox}" Visibility="Hidden"/>
+                <CheckBox x:Name="checkDead" Content="Литальный исход" Style="{StaticResource MaterialDesignAccentCheckBox}" Visibility="Hidden"/>
             </StackPanel>
             <Grid  Margin="350,0,99.8,100.4" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
                 <Grid.RowDefinitions>

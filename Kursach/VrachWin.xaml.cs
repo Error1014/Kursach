@@ -25,12 +25,17 @@ namespace Kursach
         {
             InitializeComponent();
             thisVrach = myUser;
+            if (myUser==null)
+            {
+                return;
+            }
             if (myUser.is_free == true)
             {
                 MessageBox.Show("У вас нет вызовов");
             }
             else
             {
+                info.Text = "";
                 Vizov thisVizov = GetVizov();
                 int idVizov = thisVizov.id;
                 textBlockAdres.Text = thisVizov.adres.ToString();
@@ -98,20 +103,46 @@ namespace Kursach
         private void AcceptVizov(object sender, RoutedEventArgs e)
         {
             User myVrach = GetVrach();
+            Othot otch = new Othot();
             if (isStart == false)
-            {
+            {//принял вызов
                 isStart = true;
                 btn.Content = "Завешить вызов";
-                myVrach.is_free = true;
+                myVrach.is_free = false;
+                textBlockDiagnoz.IsEnabled = true;
+                textBlockDiagnoz.Visibility = Visibility.Visible;
+                checkDead.Visibility = Visibility.Visible;
+                checkHospital.Visibility =Visibility.Visible;
             }
             else
-            {
+            {//завершил вызов
                 isStart = false;
                 btn.Content = "Принять вызов";
-                myVrach.is_free = false;
-            }
-            App.Context.SaveChanges();
+                myVrach.is_free = true;
+                otch.diagnoz = textBlockDiagnoz.Text;
+                otch.is_hospitalisir = checkHospital.IsChecked;
+                otch.is_dead = checkDead.IsChecked;
+                otch.date_othot = DateTime.Now;
+                otch.id_vizov = GetVizov().id;
+                App.Context.Othot.Add(otch);
+                App.Context.SaveChanges();
+                RestartPage();
 
+            }
+
+        }
+        public void RestartPage()
+        {
+            VrachWin VW = new VrachWin(null);
+            this.Close();
+            VW.Show();
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            MainWindow MW = new MainWindow();
+            MW.Show();
+            this.Close();
         }
     }
 }
