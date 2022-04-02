@@ -184,47 +184,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\App.datasource" />
-    <None Include="Properties\DataSources\DispetcherWin.datasource" />
-    <None Include="Properties\DataSources\Kursach.Properties.Resources.datasource" />
-    <None Include="Properties\DataSources\Kursach.Properties.Settings.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.OthotTableAdapter.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.PacientTableAdapter.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.RoleTableAdapter.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.TableAdapterManager.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter.datasource" />
-    <None Include="Properties\DataSources\Kursach.SpeedHelp2DataSetTableAdapters.VizovTableAdapter.datasource" />
-    <None Include="Properties\DataSources\MainWindow.datasource" />
-    <None Include="Properties\DataSources\Othot.datasource" />
-    <None Include="Properties\DataSources\Pacient.datasource" />
-    <None Include="Properties\DataSources\Role.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.OthotDataTable.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.OthotRow.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.OthotRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.OthotRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.PacientDataTable.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.PacientRow.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.PacientRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.PacientRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.RoleDataTable.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.RoleRow.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.RoleRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.RoleRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.UserDataTable.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.UserRow.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.UserRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.UserRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.VizovDataTable.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.VizovRow.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.VizovRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2DataSet.VizovRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\SpeedHelp2Entities.datasource" />
-    <None Include="Properties\DataSources\sysdiagrams.datasource" />
-    <None Include="Properties\DataSources\User.datasource" />
-    <None Include="Properties\DataSources\Vizov.datasource" />
-    <None Include="Properties\DataSources\WrachWin.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
