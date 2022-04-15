@@ -23,12 +23,12 @@ namespace Kursach
         public DispetcherWin()
         {
             InitializeComponent();
-            DispetcherFrame.Content = new AddVizovPage();
+            DispetcherFrame.Content = new AddVizovPage(null);
         }
 
         private void AddVizov(object sender, RoutedEventArgs e)
         {
-            DispetcherFrame.Content = new AddVizovPage();
+            DispetcherFrame.Content = new AddVizovPage(null);
         }
         private void Exit(object sender, RoutedEventArgs e)
         {
@@ -40,6 +40,11 @@ namespace Kursach
         private void ListVizov(object sender, RoutedEventArgs e)
         {
             DispetcherFrame.Content = new ListVizovPage();
+        }
+
+        public void AddVizov(Vizov vizov)
+        {
+            DispetcherFrame.Content = new AddVizovPage(vizov);
         }
     }
 }

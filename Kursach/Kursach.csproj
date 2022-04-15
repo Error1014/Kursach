@@ -79,6 +79,7 @@
     <Compile Include="ListVizovPage.xaml.cs">
       <DependentUpon>ListVizovPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Meneger.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -22,16 +22,61 @@ namespace Kursach
     {
 
         private User _curentUser = new User();
-        public AddVizovPage()
+        private bool isUpdate = false;
+        public AddVizovPage(Vizov SelectVizov)
         {
             InitializeComponent();
-            List<User> u = new List<User>();
-            foreach (var item in App.Context.User)
+            if (SelectVizov==null)
             {
-                u.Add(item);
+                isUpdate = false;
+                GetListVrach();
+                listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
             }
-            GetListVrach();
-            listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
+            else
+            {
+                isUpdate = true;
+                Pacient pac = Meneger.GetSelectPacient(SelectVizov);
+                ShowDataVizov(pac, SelectVizov);
+                DeactivationElement();
+                GetListVrach();
+            }
+            
+        }
+
+        public void ShowDataVizov(Pacient pac, Vizov vizov)
+        {
+            Familia.Text = pac.familia;
+            Name.Text = pac.name;
+            Otch.Text = pac.otch;
+            Phone.Text = vizov.phone;
+            Adres.Text = vizov.adres;
+            Age.Text = pac.age;
+            Symptom.Text = vizov.symptom;
+            listTypeVizov.SelectedItem = Meneger.GetTypeVizov(vizov);
+            listVrach.SelectedItem = vizov.vrach;
+        }
+        public void ObnullDataVizov()
+        {
+            Familia.Text = "";
+            Name.Text = "";
+            Otch.Text = "";
+            Phone.Text = "";
+            Adres.Text = "";
+            Age.Text = "";
+            Symptom.Text = "";
+            listTypeVizov.SelectedItem = null;
+            listVrach.SelectedItem = null;
+        }
+        public void DeactivationElement()
+        {
+            Familia.IsEnabled = false;
+            Name.IsEnabled = false;
+            Otch.IsEnabled = false;
+            Phone.IsEnabled = false;
+            Adres.IsEnabled = false;
+            Age.IsEnabled = false;
+            Symptom.IsEnabled = false;
+            listTypeVizov.IsEnabled = false;
         }
 
         public void GetListVrach()
@@ -50,27 +95,10 @@ namespace Kursach
             pacient.otch = Otch.Text;
             App.Context.Pacient.Add(pacient);
             vizov.phone = Phone.Text;
-            if (string.IsNullOrWhiteSpace(Adres.Text) == false)
-            {
-                vizov.adres = Adres.Text;
-            }
-            else
-            {
-                MessageBox.Show("Куда врачей посылаешь?");
-                return;
-            }
+            vizov.adres = Adres.Text;
+            pacient.age = Age.Text;
             vizov.isEnd = false;
-
             vizov.symptom = Symptom.Text;
-
-            if (string.IsNullOrWhiteSpace(Age.Text) == false)
-            {
-                pacient.age = Age.Text;
-            }
-            else
-            {
-                pacient.age = null;
-            }
             int indexUser = 0;
             if (listVrach.SelectedValue == null)
             {
@@ -83,7 +111,6 @@ namespace Kursach
                 indexUser = listVrach.SelectedIndex;
             }
             User selectUser = (User)listVrach.Items[indexUser];
-            selectUser.is_free = false;
             GetListVrach();
             if (listTypeVizov.SelectedValue == null)
             {
@@ -94,20 +121,30 @@ namespace Kursach
             {
                 vizov.type = (int)listTypeVizov.SelectedValue;
             }
+            if (selectUser.id != 9)
+            {
+                selectUser.is_free = false;
+            }
             user_vizov uv = new user_vizov();
             uv.id_user = selectUser.id;
             uv.id_vizov = vizov.id;
             vizov.pacient = pacient.id;
             vizov.date_vizov = DateTime.Now;
-            App.Context.Vizov.Add(vizov);
-            App.Context.user_vizov.Add(uv);
-            Familia.Text = "";
-            Name.Text = "";
-            Otch.Text = "";
-            Phone.Text = "";
-            Adres.Text = "";
-            Age.Text = "";
-            App.Context.SaveChanges();
+
+            if (isUpdate==true)
+            {
+                App.Context.Vizov.Add(vizov);
+                App.Context.user_vizov.Add(uv);
+                ObnullDataVizov();
+                App.Context.SaveChanges();
+            }
+            else
+            {
+                App.Context.Vizov.Add(vizov);
+                App.Context.user_vizov.Add(uv);
+                ObnullDataVizov();
+                App.Context.SaveChanges();
+            } 
 
         }
 

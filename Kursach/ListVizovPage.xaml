@@ -11,14 +11,14 @@
         <CollectionViewSource x:Key="vizovViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Vizov}}"/>
     </Page.Resources>
     <Grid Background="White">
-        <DataGrid IsReadOnly="True" x:Name="врачиDataGrid"  AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="133,0,131,157.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid IsReadOnly="True" x:Name="vizovDataGrid" MouseDoubleClick="SelectedVizow" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="квалификацияColumn" Binding="{Binding }" Header="Квалификация" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="код_врачаColumn" Binding="{Binding Код_врача}" Header="Код врача" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="стаж_работыColumn" Binding="{Binding Стаж_работы}" Header="Стаж работы" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="сфераColumn" Binding="{Binding Сфера}" Header="Сфера" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="участокColumn" Binding="{Binding Участок}" Header="Участок" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="фИО_врачаColumn" Binding="{Binding ФИО_врача}" Header="ФИО врача" Width="*"/>
+                <DataGridTextColumn x:Name="квалификацияColumn" Binding="{Binding id}" Header="ID" Width="50"/>
+                <DataGridTextColumn x:Name="код_врачаColumn" Binding="{Binding Pacient1.familia}" Header="Пациент" Width="*"/>
+                <DataGridTextColumn x:Name="стаж_работыColumn" Binding="{Binding date_vizov}" Header="Дата" Width="*"/>
+                <DataGridTextColumn x:Name="сфераColumn" Binding="{Binding phone}" Header="Телефон" Width="*"/>
+                <DataGridTextColumn x:Name="участокColumn" Binding="{Binding adres}" Header="Адрес" Width="*"/>
+                <DataGridTextColumn x:Name="фИО_врачаColumn" Binding="{Binding type_vizov.type}" Header="Тип" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
