@@ -76,7 +76,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="pacient" Type="int" />
           <Property Name="date_vizov" Type="datetime" />
           <Property Name="vrach" Type="int" />
@@ -276,7 +276,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="pacient" Type="Int32" />
           <Property Name="date_vizov" Type="DateTime" Precision="3" />
           <Property Name="vrach" Type="Int32" />
@@ -362,7 +362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SpeedHelp2Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SpeedHelp2Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Othot" EntityType="Self.Othot" />
           <EntitySet Name="Pacient" EntityType="Self.Pacient" />
           <EntitySet Name="Role" EntityType="Self.Role" />
@@ -401,7 +401,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище SpeedHelp2ModelContainer" CdmEntityContainer="SpeedHelp2Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SpeedHelp2ModelContainer" CdmEntityContainer="SpeedHelp2Entities1">
           <EntitySetMapping Name="Othot">
             <EntityTypeMapping TypeName="SpeedHelp2Model.Othot">
               <MappingFragment StoreEntitySet="Othot">

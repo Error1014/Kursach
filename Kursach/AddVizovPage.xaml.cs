@@ -23,6 +23,7 @@ namespace Kursach
 
         private User _curentUser = new User();
         private bool isUpdate = false;
+        public Vizov myVizov;
         public AddVizovPage(Vizov SelectVizov)
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace Kursach
             }
             else
             {
+                myVizov = SelectVizov;
                 isUpdate = true;
                 Pacient pac = Meneger.GetSelectPacient(SelectVizov);
                 ShowDataVizov(pac, SelectVizov);
@@ -52,7 +54,7 @@ namespace Kursach
             Adres.Text = vizov.adres;
             Age.Text = pac.age;
             Symptom.Text = vizov.symptom;
-            listTypeVizov.SelectedItem = Meneger.GetTypeVizov(vizov);
+            listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
             listVrach.SelectedItem = vizov.vrach;
         }
         public void ObnullDataVizov()
@@ -76,7 +78,7 @@ namespace Kursach
             Adres.IsEnabled = false;
             Age.IsEnabled = false;
             Symptom.IsEnabled = false;
-            listTypeVizov.IsEnabled = false;
+            //listTypeVizov.IsEnabled = false;
         }
 
         public void GetListVrach()
@@ -90,6 +92,17 @@ namespace Kursach
         {
             Pacient pacient = new Pacient();
             Vizov vizov = new Vizov();
+            if (myVizov==null)
+            {
+                var newID = 1;
+                newID += App.Context.Vizov.Max(x=>x.id);
+                vizov.id = newID;
+            }
+            else
+            {
+                vizov =App.Context.Vizov.FirstOrDefault(s => s.id.Equals(myVizov.id));
+                MessageBox.Show(vizov.id.ToString());
+            }
             pacient.familia = Familia.Text;
             pacient.name = Name.Text;
             pacient.otch = Otch.Text;
@@ -133,14 +146,12 @@ namespace Kursach
 
             if (isUpdate==true)
             {
-                App.Context.Vizov.Add(vizov);
                 App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();
                 App.Context.SaveChanges();
             }
             else
             {
-                App.Context.Vizov.Add(vizov);
                 App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();
                 App.Context.SaveChanges();

@@ -13,11 +13,11 @@ namespace Kursach
     /// </summary>
     public partial class App : Application
     {
-        public static SpeedHelp2Entities Context;
+        public static SpeedHelp2Entities1 Context;
 
         void Application_Start(object sender, StartupEventArgs args)
         {
-            Context = new SpeedHelp2Entities();
+            Context = new SpeedHelp2Entities1();
         }
     }
 }

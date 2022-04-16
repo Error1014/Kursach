@@ -13,10 +13,10 @@ namespace Kursach
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SpeedHelp2Entities : DbContext
+    public partial class SpeedHelp2Entities1 : DbContext
     {
-        public SpeedHelp2Entities()
-            : base("name=SpeedHelp2Entities")
+        public SpeedHelp2Entities1()
+            : base("name=SpeedHelp2Entities1")
         {
         }
     
