@@ -55,7 +55,9 @@ namespace Kursach
             Age.Text = pac.age;
             Symptom.Text = vizov.symptom;
             listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
-            listVrach.SelectedItem = vizov.vrach;
+            User user = new User();
+            user.familia = "Gegrby";
+            listVrach.SelectedItem = user.familia;
         }
         public void ObnullDataVizov()
         {
@@ -83,9 +85,18 @@ namespace Kursach
 
         public void GetListVrach()
         {
-            listVrach.ItemsSource = from p in App.Context.User.ToList()
-                                    where (p.role == 1) && (p.is_free == true)
-                                    select p;
+            if (myVizov==null)
+            {
+                listVrach.ItemsSource = from p in App.Context.User.ToList()
+                                        where ((p.role == 1) && (p.is_free == true))
+                                        select p;
+            }
+            else
+            {
+                listVrach.ItemsSource = from p in App.Context.User.ToList()
+                                        where ((p.role == 1) && (p.is_free == true) || (p.id == myVizov.vrach))
+                                        select p;
+            }
         }
 
         private void AddNewVizov(object sender, RoutedEventArgs e)
