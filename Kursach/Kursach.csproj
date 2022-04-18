@@ -76,6 +76,9 @@
     <Compile Include="AddVizovPage.xaml.cs">
       <DependentUpon>AddVizovPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GetSetVizov.xaml.cs">
+      <DependentUpon>GetSetVizov.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListVizovPage.xaml.cs">
       <DependentUpon>ListVizovPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DispetcherWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetSetVizov.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
