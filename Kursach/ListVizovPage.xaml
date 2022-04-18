@@ -13,12 +13,12 @@
     <Grid Background="White">
         <DataGrid IsReadOnly="True" x:Name="vizovDataGrid" MouseDoubleClick="SelectedVizow" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="квалификацияColumn" Binding="{Binding id}" Header="ID" Width="50"/>
-                <DataGridTextColumn x:Name="код_врачаColumn" Binding="{Binding Pacient1.familia}" Header="Пациент" Width="*"/>
-                <DataGridTextColumn x:Name="стаж_работыColumn" Binding="{Binding date_vizov}" Header="Дата" Width="*"/>
-                <DataGridTextColumn x:Name="сфераColumn" Binding="{Binding phone}" Header="Телефон" Width="*"/>
-                <DataGridTextColumn x:Name="участокColumn" Binding="{Binding adres}" Header="Адрес" Width="*"/>
-                <DataGridTextColumn x:Name="фИО_врачаColumn" Binding="{Binding type_vizov.type}" Header="Тип" Width="*"/>
+                <DataGridTextColumn x:Name="ID" Binding="{Binding id}" Header="ID" Width="50"/>
+                <DataGridTextColumn x:Name="Famil" Binding="{Binding Pacient1.familia}" Header="Пациент" Width="*"/>
+                <DataGridTextColumn x:Name="date" Binding="{Binding date_vizov}" Header="Дата" Width="*"/>
+                <DataGridTextColumn x:Name="Phone" Binding="{Binding phone}" Header="Телефон" Width="*"/>
+                <DataGridTextColumn x:Name="Adres" Binding="{Binding adres}" Header="Адрес" Width="*"/>
+                <DataGridTextColumn x:Name="Type_vizov" Binding="{Binding type_vizov.type}" Header="Тип" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

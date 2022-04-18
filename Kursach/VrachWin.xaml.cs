@@ -24,6 +24,7 @@ namespace Kursach
         public VrachWin(User myUser)
         {
             InitializeComponent();
+            thisVrach= myUser;
             VrachFrame.Content =new GetSetVizov(myUser);
         }
 
@@ -42,12 +43,12 @@ namespace Kursach
 
         private void ShowMyVizov(object sender, RoutedEventArgs e)
         {
-            VrachFrame.Content = new GetSetVizov(myUser);
+            VrachFrame.Content = new GetSetVizov(thisVrach);
         }
 
         private void ShowStatisic(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("2");
+            VrachFrame.Content = new Statistic(thisVrach);
         }
     }
 }

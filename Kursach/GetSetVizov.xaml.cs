@@ -32,7 +32,7 @@ namespace Kursach
             }
             if (myUser.is_free == true)
             {
-                MessageBox.Show("У вас нет вызовов");
+                
             }
             else
             {
