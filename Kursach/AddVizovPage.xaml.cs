@@ -124,7 +124,7 @@ namespace Kursach
                 indexUser = listVrach.SelectedIndex;
             }
             User selectUser = (User)listVrach.Items[indexUser];
-            GetListVrach();
+            
             if (listTypeVizov.SelectedValue == null)
             {
                 MessageBox.Show("Укажите тип вызова");
@@ -134,6 +134,7 @@ namespace Kursach
             {
                 vizov.type = (int)listTypeVizov.SelectedValue;
             }
+            GetListVrach();
             if (selectUser.id != 9)
             {
                 selectUser.is_free = false;
@@ -146,12 +147,14 @@ namespace Kursach
 
             if (isUpdate==true)
             {
+                //App.Context.Vizov.Add(vizov);
                 App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();
                 App.Context.SaveChanges();
             }
             else
             {
+                App.Context.Vizov.Add(vizov);
                 App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();
                 App.Context.SaveChanges();
