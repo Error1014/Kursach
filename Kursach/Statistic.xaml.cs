@@ -32,8 +32,10 @@ namespace Kursach
             {
                 stat.Add(new OthotVrach(item.id, item.id_vizov.Value, item.date_othot.Value, item.is_hospitalisir.Value, item.is_dead.Value));
             }
-            
-            statisticDataGrid.DataContext = data;
+            var s = from ov in stat
+                    select ov;
+
+            statisticDataGrid.ItemsSource = data;
         }
         public class OthotVrach
         {

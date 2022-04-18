@@ -39,7 +39,7 @@ namespace Kursach
                 isUpdate = true;
                 Pacient pac = Meneger.GetSelectPacient(SelectVizov);
                 ShowDataVizov(pac, SelectVizov);
-                DeactivationElement();
+                //DeactivationElement();
                 GetListVrach();
             }
             

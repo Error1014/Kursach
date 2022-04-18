@@ -12,13 +12,13 @@
         <CollectionViewSource x:Key="vizovViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Vizov}}"/>
     </Page.Resources>
     <Grid Background="White">
-        <DataGrid IsReadOnly="True" x:Name="statisticDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid IsReadOnly="True"  x:Name="statisticDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="ID" Binding="{Binding id}" Header="ID" Width="50"/>
                 <DataGridTextColumn x:Name="ID_viz" Binding="{Binding id_vizov}" Header="Вызов" Width="*"/>
-                <DataGridTextColumn x:Name="date" Binding="{Binding date_othot}" Header="Дата" Width="*"/>
-                <DataGridTextColumn x:Name="IsHosp" Binding="{Binding is_hospitalisir}" Header="Госпитализирован" Width="*"/>
-                <DataGridTextColumn x:Name="IsDead" Binding="{Binding is_dead}" Header="Литальный" Width="*"/>
+                <DataGridTextColumn x:Name="date" Binding="{Binding date}" Header="Дата" Width="*"/>
+                <DataGridTextColumn x:Name="IsHosp" Binding="{Binding isHosp}" Header="Госпитализирован" Width="*"/>
+                <DataGridTextColumn x:Name="IsDead" Binding="{Binding isDead}" Header="Литальный" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

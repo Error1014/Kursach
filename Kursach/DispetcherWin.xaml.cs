@@ -39,12 +39,16 @@ namespace Kursach
 
         private void ListVizov(object sender, RoutedEventArgs e)
         {
-            DispetcherFrame.Content = new ListVizovPage();
+            DispetcherFrame.Content = new ListVizovPage(0);
         }
-
+        private void ListActivVizov(object sender, RoutedEventArgs e)
+        {
+            DispetcherFrame.Content = new ListVizovPage(1);
+        }
         public void AddVizov(Vizov vizov)
         {
             DispetcherFrame.Content = new AddVizovPage(vizov);
         }
+
     }
 }

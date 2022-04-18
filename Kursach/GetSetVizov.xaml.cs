@@ -119,6 +119,14 @@ namespace Kursach
                 isStart = false;
                 btn.Content = "Принять вызов";
                 myVrach.is_free = true;
+                Vizov myViz = new Vizov();
+                var viz = from v in App.Context.Vizov
+                        select v;
+                foreach (var item in viz)
+                {
+                    myViz = item;
+                }
+                myViz.isEnd = true;
                 otch.diagnoz = textBlockDiagnoz.Text;
                 otch.is_hospitalisir = checkHospital.IsChecked;
                 otch.is_dead = checkDead.IsChecked;

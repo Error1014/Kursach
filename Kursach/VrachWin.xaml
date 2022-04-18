@@ -31,7 +31,7 @@
                 <Button Content="стр1" Margin="0,10,0,5"/>
                 <Button Content="стр1" Margin="0,10,0,5"/>
             </StackPanel>
-            <Frame x:Name="VrachFrame" Grid.Row="1" Grid.Column="1"/>
+            <Frame x:Name="VrachFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"/>
         </Grid>
     </Grid>
 </Window>

@@ -22,14 +22,26 @@ namespace Kursach
     /// </summary>
     public partial class ListVizovPage : Page
     {
-        public ListVizovPage()
+        public ListVizovPage(int i)
         {
             InitializeComponent();
-            var data = from v in App.Context.Vizov.ToList()
-                       where v.vrach == 9
-                       select v;
-            Console.WriteLine(data);
-            vizovDataGrid.DataContext = data;
+            if (i == 0)
+            {
+                var data = from v in App.Context.Vizov.ToList()
+                           where v.vrach == 9
+                           select v;
+                Console.WriteLine(data);
+                vizovDataGrid.DataContext = data;
+            }
+            else
+            {
+                var data = from v in App.Context.Vizov.ToList()
+                           where (v.vrach != 9) &&(v.isEnd==false)
+                           select v;
+                Console.WriteLine(data);
+                vizovDataGrid.DataContext = data;
+
+            }
         }
 
         private void SelectedVizow(object sender, MouseButtonEventArgs e)
