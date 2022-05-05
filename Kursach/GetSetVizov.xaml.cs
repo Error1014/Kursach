@@ -50,12 +50,12 @@ namespace Kursach
                 var typeVizov = from t in App.Context.type_vizov.ToList()
                                 where thisVizov.type == t.id
                                 select t;
-                string s = "";
-                foreach (var item in typeVizov)
-                {
-                    s = item.type;
-                }
-                textBlockType.Text = s;
+                //string s = "";
+                //foreach (var item in typeVizov)
+                //{
+                //    s = item.type;
+                //}
+                //textBlockType.Text = s;
             }
         }
         private Pacient GetPacient(int idVizov)
@@ -108,7 +108,7 @@ namespace Kursach
             {//принял вызов
                 isStart = true;
                 btn.Content = "Завешить вызов";
-                myVrach.is_free = false;
+                //myVrach.is_free = false;
                 textBlockDiagnoz.IsEnabled = true;
                 textBlockDiagnoz.Visibility = Visibility.Visible;
                 checkDead.Visibility = Visibility.Visible;
@@ -119,19 +119,21 @@ namespace Kursach
                 isStart = false;
                 btn.Content = "Принять вызов";
                 myVrach.is_free = true;
-                Vizov myViz = new Vizov();
                 var viz = from v in App.Context.Vizov
-                        select v;
+                          where v.vrach == myVrach.id
+                          select v;
+                Vizov myViz = new Vizov();
                 foreach (var item in viz)
                 {
                     myViz = item;
                 }
                 myViz.isEnd = true;
-                otch.diagnoz = textBlockDiagnoz.Text;
+                MessageBox.Show(myViz.isEnd.ToString());
+                //otch.diagnoz = textBlockDiagnoz.Text;
                 otch.is_hospitalisir = checkHospital.IsChecked;
                 otch.is_dead = checkDead.IsChecked;
                 otch.date_othot = DateTime.Now;
-                otch.id_vizov = GetVizov().id;
+                otch.id_vizov =  GetVizov().id;
                 App.Context.Othot.Add(otch);
                 App.Context.SaveChanges();
                 VrachWin VW = (VrachWin)Window.GetWindow(this);

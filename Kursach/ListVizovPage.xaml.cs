@@ -36,7 +36,7 @@ namespace Kursach
             else
             {
                 var data = from v in App.Context.Vizov.ToList()
-                           where (v.vrach != 9) &&(v.isEnd==false)
+                           where (v.vrach != 9) && (v.isEnd==false)
                            select v;
                 Console.WriteLine(data);
                 vizovDataGrid.DataContext = data;

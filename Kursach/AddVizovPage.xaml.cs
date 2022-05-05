@@ -21,9 +21,9 @@ namespace Kursach
     public partial class AddVizovPage : Page
     {
 
-        private User _curentUser = new User();
         private bool isUpdate = false;
         public Vizov myVizov;
+        public int idVrach;
         public AddVizovPage(Vizov SelectVizov)
         {
             InitializeComponent();
@@ -55,9 +55,7 @@ namespace Kursach
             Age.Text = pac.age;
             Symptom.Text = vizov.symptom;
             listTypeVizov.ItemsSource = App.Context.type_vizov.ToList();
-            User user = new User();
-            user.familia = "Gegrby";
-            listVrach.SelectedItem = user.familia;
+            //listVrach.SelectedItem = user.familia;
         }
         public void ObnullDataVizov()
         {
@@ -93,6 +91,10 @@ namespace Kursach
             }
             else
             {
+                var thisVrach = (from p in App.Context.User.ToList()
+                                where p.id == myVizov.vrach
+                                select p.id).Max();
+                idVrach = thisVrach;
                 listVrach.ItemsSource = from p in App.Context.User.ToList()
                                         where ((p.role == 1) && (p.is_free == true) || (p.id == myVizov.vrach))
                                         select p;
@@ -106,18 +108,29 @@ namespace Kursach
             if (myVizov==null)
             {
                 var newID = 1;
-                newID += App.Context.Vizov.Max(x=>x.id);
+                if (App.Context.Vizov.Count()==0)
+                {
+                    newID = 100;
+                }
+                else
+                {
+                    newID += App.Context.Vizov.Max(x => x.id);
+                }
                 vizov.id = newID;
             }
             else
             {
-                vizov =App.Context.Vizov.FirstOrDefault(s => s.id.Equals(myVizov.id));
-                MessageBox.Show(vizov.id.ToString());
+                vizov = App.Context.Vizov.FirstOrDefault(s => s.id.Equals(myVizov.id));
+                pacient.id = (from p in App.Context.Pacient.ToList()
+                           where p.id == vizov.pacient
+                           select p.id).Max(x=>x);
+
+                MessageBox.Show(pacient.id.ToString());
+
             }
             pacient.familia = Familia.Text;
             pacient.name = Name.Text;
             pacient.otch = Otch.Text;
-            App.Context.Pacient.Add(pacient);
             vizov.phone = Phone.Text;
             vizov.adres = Adres.Text;
             pacient.age = Age.Text;
@@ -134,6 +147,14 @@ namespace Kursach
                 vizov.vrach = (int)listVrach.SelectedValue;
                 indexUser = listVrach.SelectedIndex;
             }
+            if (isUpdate==true)
+            {
+                User oldUser = (from u in App.Context.User.ToList()
+                                where u.id == idVrach
+                                select u).Max(x => x);
+                oldUser.is_free = true;
+            }
+            
             User selectUser = (User)listVrach.Items[indexUser];
             
             if (listTypeVizov.SelectedValue == null)
@@ -145,6 +166,7 @@ namespace Kursach
             {
                 vizov.type = (int)listTypeVizov.SelectedValue;
             }
+
             GetListVrach();
             if (selectUser.id != 9)
             {
@@ -158,13 +180,16 @@ namespace Kursach
 
             if (isUpdate==true)
             {
+                //App.Context.Pacient.Add(pacient);
                 //App.Context.Vizov.Add(vizov);
-                App.Context.user_vizov.Add(uv);
+                //App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();
                 App.Context.SaveChanges();
             }
             else
             {
+                MessageBox.Show("EEEEE");
+                App.Context.Pacient.Add(pacient);
                 App.Context.Vizov.Add(vizov);
                 App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();

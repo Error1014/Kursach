@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kursach"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VrachWin" Height="800" Width="1500">
+        Title="VrachWin" Height="800" Width="1500" WindowState="Maximized">
     <Window.Resources>
         <local:SpeedHelp2DataSet x:Key="speedHelp2DataSet"/>
         <CollectionViewSource x:Key="userViewSource" Source="{Binding User, Source={StaticResource speedHelp2DataSet}}"/>
