@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d15b5560f3904b29b88252c44b84cfa2" Name="Diagram1">
+      <Diagram DiagramId="21edd4b3091a4baf864fc5d2fc1f5683" Name="Diagram1">
         <EntityTypeShape EntityType="SpeedHelp2Model.Othot" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SpeedHelp2Model.Pacient" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SpeedHelp2Model.Role" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />

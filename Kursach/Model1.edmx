@@ -12,7 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date_othot" Type="date" />
           <Property Name="id_vizov" Type="int" />
-          <Property Name="diagnoz" Type="nchar" MaxLength="10" />
+          <Property Name="diagnoz" Type="varchar" MaxLength="500" />
           <Property Name="is_dead" Type="bit" />
           <Property Name="is_hospitalisir" Type="bit" />
         </EntityType>
@@ -204,7 +204,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date_othot" Type="DateTime" Precision="0" />
           <Property Name="id_vizov" Type="Int32" />
-          <Property Name="diagnoz" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="diagnoz" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="is_dead" Type="Boolean" />
           <Property Name="is_hospitalisir" Type="Boolean" />
           <NavigationProperty Name="Vizov" Relationship="Self.FK_Othot_Vizov" FromRole="Othot" ToRole="Vizov" />
@@ -362,7 +362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SpeedHelp2Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SpeedHelp2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Othot" EntityType="Self.Othot" />
           <EntitySet Name="Pacient" EntityType="Self.Pacient" />
           <EntitySet Name="Role" EntityType="Self.Role" />
@@ -401,7 +401,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище SpeedHelp2ModelContainer" CdmEntityContainer="SpeedHelp2Entities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SpeedHelp2ModelContainer" CdmEntityContainer="SpeedHelp2Entities">
           <EntitySetMapping Name="Othot">
             <EntityTypeMapping TypeName="SpeedHelp2Model.Othot">
               <MappingFragment StoreEntitySet="Othot">

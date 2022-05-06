@@ -39,7 +39,7 @@ namespace Kursach
                 info.Text = "";
                 Vizov thisVizov = GetVizov();
                 int idVizov = thisVizov.id;
-                textBlockAdres.Text = thisVizov.adres.ToString();
+                //textBlockAdres.Text = thisVizov.adres.ToString();
                 Pacient thisPacient = GetPacient(idVizov);
                 textBlockFamilia.Text = thisPacient.familia;
                 textBlockName.Text = thisPacient.name;
@@ -129,7 +129,7 @@ namespace Kursach
                 }
                 myViz.isEnd = true;
                 MessageBox.Show(myViz.isEnd.ToString());
-                //otch.diagnoz = textBlockDiagnoz.Text;
+                otch.diagnoz = textBlockDiagnoz.Text;
                 otch.is_hospitalisir = checkHospital.IsChecked;
                 otch.is_dead = checkDead.IsChecked;
                 otch.date_othot = DateTime.Now;
