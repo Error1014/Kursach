@@ -30,30 +30,29 @@ namespace Kursach
         {
             foreach (var item in App.Context.User)
             {
-                if (Login.Text == item.login.ToString())
-                {
-                    if (Pass.Password == item.password.ToString())
+                    if (Login.Text == item.login.ToString())
                     {
-                        Pass.Password = item.password.ToString();
-                        DispetcherWin DW = new DispetcherWin();
-                        VrachWin VW = new VrachWin(item);
-                        if (item.role == 2)
+                        if (Pass.Password == item.password.ToString())
                         {
-                            DW.Show();
-                            this.Close();
+                            DispetcherWin DW = new DispetcherWin();
+                            VrachWin VW = new VrachWin(item);
+                            if (item.role == 2)
+                            {
+                                DW.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                VW.Show();
+                                this.Close();
+                            }
+
+
                         }
-                        else
-                        {
-                            VW.Show();
-                            this.Close();
-                        }
-                        
-                        return;
+                         break;
+
                     }
-                    break;
-                }
-            }
-            MessageBox.Show("Неверный логин или пароль");
+                }        
 
         }
 

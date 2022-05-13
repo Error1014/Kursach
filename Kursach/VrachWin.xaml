@@ -18,18 +18,11 @@
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.ColumnSpan="3" Background="LightBlue" >
-                <Button Content="Выход" Click="Exit" HorizontalAlignment="Right"/>
-            </StackPanel>
-            <StackPanel Background="Aquamarine" Grid.Column="0" Grid.Row="1" >
+
+            <StackPanel Background="#FF9AE2FF" Grid.Column="0" >
                 <Button Content="Мой вызов" Margin="0,10,0,5" Click="ShowMyVizov"/>
                 <Button Content="Статистика" Margin="0,10,0,5" Click="ShowStatisic"/>
-                <Button Content="стр1" Margin="0,10,0,5"/>
-                <Button Content="стр1" Margin="0,10,0,5"/>
+                <Button Content="Выход" Margin="0,10,0,5" Click="Exit" Cursor="Hand" Background="#FFF35621"/>
             </StackPanel>
             <Frame x:Name="VrachFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"/>
         </Grid>

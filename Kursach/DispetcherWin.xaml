@@ -14,20 +14,13 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.ColumnSpan="3" Background="LightBlue" >
-                <Button Content="Выход" Click="Exit" HorizontalAlignment="Right"/>
-            </StackPanel>
-            <StackPanel Background="Aquamarine" Grid.Column="0" Grid.Row="1" >
+            <StackPanel Background="#FF9AE2FF" Grid.Column="0" >
                 <Button Content="Добывить вызов" Margin="0,10,0,5" Click="AddVizov"/>
                 <Button Content="Очередь вызовов" Margin="0,10,0,5" Click="ListVizov"/>
                 <Button Content="Активные вызовы" Margin="0,10,0,5" Click="ListActivVizov"/>
-                <Button Content="стр1" Margin="0,10,0,5"/>
+                <Button Content="Выход" Margin="0,10,0,5" Click="Exit" Cursor="Hand" Background="#FFF35621"/>
             </StackPanel>
-            <Frame Background="Wheat" x:Name="DispetcherFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"></Frame>
+            <Frame Background="White" x:Name="DispetcherFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
         </Grid>
     </Grid>
 </Window>

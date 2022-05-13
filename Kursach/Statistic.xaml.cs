@@ -45,10 +45,6 @@ namespace Kursach
             string isHosp;
             string isDead;
 
-            public OthotVrach()
-            {
-
-            }
             public OthotVrach(int id, int id_vizov,DateTime date, bool isHosp, bool isDead)
             {
                 this.id = id;

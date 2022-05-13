@@ -50,5 +50,6 @@ namespace Kursach
         {
             VrachFrame.Content = new Statistic(thisVrach);
         }
+
     }
 }
