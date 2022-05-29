@@ -38,6 +38,16 @@ namespace Kursach
                 myVizov = SelectVizov;
                 isUpdate = true;
                 Pacient pac = Meneger.GetSelectPacient(SelectVizov);
+                var us = (from u in App.Context.User.ToList()
+                         where u.id == myVizov.vrach
+                         select u).Last();
+                User user = us;
+                listVrach.SelectedItem = user;
+                var t_v = (from v in App.Context.type_vizov.ToList()
+                          where v.id == myVizov.type
+                          select v).Last();
+                type_vizov type = t_v;
+                listTypeVizov.SelectedItem = type;
                 ShowDataVizov(pac, SelectVizov);
                 //DeactivationElement();
                 GetListVrach();
@@ -188,7 +198,6 @@ namespace Kursach
             }
             else
             {
-                MessageBox.Show("EEEEE");
                 App.Context.Pacient.Add(pacient);
                 App.Context.Vizov.Add(vizov);
                 App.Context.user_vizov.Add(uv);
