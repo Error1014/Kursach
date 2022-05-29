@@ -38,6 +38,7 @@ namespace Kursach
             {
                 info.Text = "";
                 Vizov thisVizov = GetVizov();
+
                 int idVizov = thisVizov.id;
                 //textBlockAdres.Text = thisVizov.adres.ToString();
                 Pacient thisPacient = GetPacient(idVizov);
@@ -75,16 +76,17 @@ namespace Kursach
 
         private Vizov GetVizov()
         {
+     
             var vizov = from v in App.Context.Vizov
-                        join uv in App.Context.user_vizov on v.id equals uv.id_vizov
-                        where uv.id_user == thisVrach.id
-                        select v;
+                         join uv in App.Context.user_vizov on v.id equals uv.id_vizov
+                         join u in App.Context.User on uv.id_user equals u.id
+                         where u.id == thisVrach.id
+                         select v;
             Vizov thisVizov = new Vizov();
             foreach (var item in vizov)
             {
                 thisVizov = item;
             }
-            int idVizov = thisVizov.id;
             return thisVizov;
         }
         private User GetVrach()

@@ -181,6 +181,17 @@ namespace Kursach
                 selectUser.is_free = false;
             }
             user_vizov uv = new user_vizov();
+           
+            if (isUpdate==true)
+            {
+               var us_v = (from u_v in App.Context.user_vizov
+                         where u_v.id_vizov == vizov.id
+                        select u_v);
+                foreach (var item in us_v)
+                {
+                    uv = item;
+                }
+            }
             uv.id_user = selectUser.id;
             uv.id_vizov = vizov.id;
             vizov.pacient = pacient.id;
