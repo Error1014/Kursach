@@ -135,8 +135,6 @@ namespace Kursach
                            where p.id == vizov.pacient
                            select p.id).Max(x=>x);
 
-                MessageBox.Show(pacient.id.ToString());
-
             }
             pacient.familia = Familia.Text;
             pacient.name = Name.Text;

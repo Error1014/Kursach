@@ -128,12 +128,10 @@ namespace Kursach
                     myViz = item;
                 }
                 myViz.isEnd = true;
-                MessageBox.Show(myViz.isEnd.ToString());
                 otch.diagnoz = textBlockDiagnoz.Text;
                 otch.is_hospitalisir = checkHospital.IsChecked;
                 otch.is_dead = checkDead.IsChecked;
                 otch.date_othot = DateTime.Now;
-                MessageBox.Show(otch.date_othot.ToString());
                 otch.id_vizov =  GetVizov().id;
                 App.Context.Othot.Add(otch);
                 App.Context.SaveChanges();
