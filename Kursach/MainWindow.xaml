@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Kursach"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="600" Width="800">
     <Window.Resources>
         <local:SpeedHelp2DataSet x:Key="speedHelp2DataSet"/>
         <CollectionViewSource x:Key="userViewSource" Source="{Binding User, Source={StaticResource speedHelp2DataSet}}"/>

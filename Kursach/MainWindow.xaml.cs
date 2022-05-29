@@ -57,17 +57,6 @@ namespace Kursach
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            Kursach.SpeedHelp2DataSet speedHelp2DataSet = ((Kursach.SpeedHelp2DataSet)(this.FindResource("speedHelp2DataSet")));
-            // Загрузить данные в таблицу User. Можно изменить этот код как требуется.
-            Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter speedHelp2DataSetUserTableAdapter = new Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter();
-            speedHelp2DataSetUserTableAdapter.Fill(speedHelp2DataSet.User);
-            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
-            userViewSource.View.MoveCurrentToFirst();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DispetcherWin DW = new DispetcherWin();

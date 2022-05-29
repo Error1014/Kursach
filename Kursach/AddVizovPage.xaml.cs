@@ -203,7 +203,10 @@ namespace Kursach
                 App.Context.user_vizov.Add(uv);
                 ObnullDataVizov();
                 App.Context.SaveChanges();
-            } 
+            }
+            listVrach.ItemsSource = from p in App.Context.User.ToList()
+                                    where ((p.role == 1) && (p.is_free == true))
+                                    select p;
 
         }
 
@@ -211,15 +214,15 @@ namespace Kursach
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            Kursach.SpeedHelp2DataSet speedHelp2DataSet = ((Kursach.SpeedHelp2DataSet)(this.FindResource("speedHelp2DataSet")));
-            // Загрузить данные в таблицу User. Можно изменить этот код как требуется.
-            Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter speedHelp2DataSetUserTableAdapter = new Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter();
-            speedHelp2DataSetUserTableAdapter.Fill(speedHelp2DataSet.User);
-            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
-            userViewSource.View.MoveCurrentToFirst();
-            System.Windows.Data.CollectionViewSource vizovViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vizovViewSource")));
-            // Загрузите данные, установив свойство CollectionViewSource.Source:
-            // vizovViewSource.Source = [универсальный источник данных]
+            //Kursach.SpeedHelp2DataSet speedHelp2DataSet = ((Kursach.SpeedHelp2DataSet)(this.FindResource("speedHelp2DataSet")));
+            //// Загрузить данные в таблицу User. Можно изменить этот код как требуется.
+            //Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter speedHelp2DataSetUserTableAdapter = new Kursach.SpeedHelp2DataSetTableAdapters.UserTableAdapter();
+            //speedHelp2DataSetUserTableAdapter.Fill(speedHelp2DataSet.User);
+            //System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
+            //userViewSource.View.MoveCurrentToFirst();
+            //System.Windows.Data.CollectionViewSource vizovViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vizovViewSource")));
+            //// Загрузите данные, установив свойство CollectionViewSource.Source:
+            //// vizovViewSource.Source = [универсальный источник данных]
         }
 
     }

@@ -58,9 +58,9 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="50" />
-          <Property Name="familia" Type="nchar" MaxLength="10" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
-          <Property Name="otch" Type="nchar" MaxLength="10" />
+          <Property Name="familia" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="otch" Type="varchar" MaxLength="50" />
           <Property Name="role" Type="int" />
           <Property Name="is_free" Type="bit" />
         </EntityType>
@@ -254,9 +254,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="familia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="otch" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="familia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="otch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="role" Type="Int32" />
           <Property Name="is_free" Type="Boolean" />
           <NavigationProperty Name="Role1" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
