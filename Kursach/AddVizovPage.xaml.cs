@@ -133,7 +133,7 @@ namespace Kursach
                 vizov = App.Context.Vizov.FirstOrDefault(s => s.id.Equals(myVizov.id));
                 pacient.id = (from p in App.Context.Pacient.ToList()
                            where p.id == vizov.pacient
-                           select p.id).Max(x=>x);
+                           select p.id).Last();
 
             }
             pacient.familia = Familia.Text;
@@ -159,7 +159,7 @@ namespace Kursach
             {
                 User oldUser = (from u in App.Context.User.ToList()
                                 where u.id == idVrach
-                                select u).Max(x => x);
+                                select u).Last();
                 oldUser.is_free = true;
             }
             

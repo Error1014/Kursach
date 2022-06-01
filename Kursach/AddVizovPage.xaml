@@ -22,7 +22,7 @@
             <RowDefinition Height="400"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="500" Margin="25,0,0,0">
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="341" Margin="25,0,0,0">
             <TextBlock Text="Добавить вызов" FontSize="30" FontWeight="Bold" Margin="0,0,0,20"/>
             <TextBox x:Name="Familia" FontSize="20" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignTextBox}"/>
             <TextBox x:Name="Name" FontSize="20" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignTextBox}"/>
@@ -32,17 +32,8 @@
             <TextBox x:Name="Adres" FontSize="20" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignTextBox}"/>
             <ComboBox x:Name="listVrach" FontSize="20" materialDesign:HintAssist.Hint="Назначить врача" DisplayMemberPath="familia" SelectedValuePath="id" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignComboBox}"/>
             <ComboBox x:Name="listTypeVizov" FontSize="20" materialDesign:HintAssist.Hint="Тип вызова" DisplayMemberPath="type" SelectedValuePath="id" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignComboBox}"/>
-            <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-            </Grid>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" MaxWidth="500" Height="400" Margin="10,60,0,0" >
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" MaxWidth="500" Margin="10,60,0,10" >
             <TextBox x:Name="Symptom" FontSize="20" materialDesign:HintAssist.Hint="Симптомы" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBox}" Width="500"/>
         </StackPanel>
         <DockPanel Margin="0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
