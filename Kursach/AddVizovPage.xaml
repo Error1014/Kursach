@@ -37,7 +37,7 @@
             <TextBox x:Name="Symptom" FontSize="20" materialDesign:HintAssist.Hint="Симптомы" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBox}" Width="500"/>
         </StackPanel>
         <DockPanel Margin="0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
-            <Button HorizontalAlignment="Right" Content="Добавить" Width="150" Height="35" Click="AddNewVizov"/>
+            <Button HorizontalAlignment="Right" Content="Сохранить" Width="150" Height="35" Click="AddNewVizov"/>
         </DockPanel>
     </Grid>
 </Page>

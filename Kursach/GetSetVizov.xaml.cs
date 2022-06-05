@@ -48,15 +48,12 @@ namespace Kursach
                 textBlockAge.Text = thisPacient.age;
                 textBlockPhone.Text = thisVizov.phone;
                 textBlockSymptom.Text = thisVizov.symptom;
-                var typeVizov = from t in App.Context.type_vizov.ToList()
+                var typeVizov = (from t in App.Context.type_vizov.ToList()
                                 where thisVizov.type == t.id
-                                select t;
-                //string s = "";
-                //foreach (var item in typeVizov)
-                //{
-                //    s = item.type;
-                //}
-                //textBlockType.Text = s;
+                                select t).Last();
+                string s = typeVizov.type;
+              
+                textBlockType.Text = s;
             }
         }
         private Pacient GetPacient(int idVizov)
