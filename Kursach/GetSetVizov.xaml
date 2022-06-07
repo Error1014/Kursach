@@ -31,42 +31,11 @@
             <TextBlock x:Name="textBlockAge" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
             <TextBlock x:Name="textBlockPhone" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
             <TextBlock x:Name="textBlockType" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-
-            <Grid x:Name="grid1" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-            </Grid>
-            <Grid x:Name="grid2" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="155,0,0,0" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-            </Grid>
-            <Grid x:Name="grid3" DataContext="{StaticResource vizovViewSource}" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-            </Grid>
             <TextBlock x:Name="textBlockAdres" Text="" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" MaxWidth="500" Margin="10,60,0,0" Width="390" >
             <TextBlock x:Name="textBlockSymptom" FontSize="20" Text="" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBlock}" Width="500"/>
             <TextBox x:Name="textBlockDiagnoz" FontSize="20" Text="" materialDesign:HintAssist.Hint="Диагноз" Visibility="Hidden" TextWrapping="Wrap" Style="{StaticResource MaterialDesignTextBox}" Width="500"/>
-
             <CheckBox x:Name="checkHospital" Content="Гостопилизирован" Style="{StaticResource MaterialDesignAccentCheckBox}" Visibility="Hidden"/>
             <CheckBox x:Name="checkDead" Content="Литальный исход" Style="{StaticResource MaterialDesignAccentCheckBox}" Visibility="Hidden"/>
         </StackPanel>
