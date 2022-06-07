@@ -26,51 +26,10 @@ namespace Kursach
             var data = from v in App.Context.Vizov.ToList()
                        from o in App.Context.Othot.ToList()
                        where (v.vrach == user.id) && (v.id == o.id_vizov)
-                       select o;
-            List <OthotVrach> stat = new List<OthotVrach>();
-            foreach (var item in data)
-            {
-                stat.Add(new OthotVrach(item.id, item.id_vizov.Value, item.date_othot.Value, item.is_hospitalisir.Value, item.is_dead.Value));
-            }
-            var s = from ov in stat
-                    select ov;
+                       select o ;
+            
 
             statisticDataGrid.ItemsSource = data;
-        }
-        public class OthotVrach
-        {
-            int id;
-            int id_vizov;
-            DateTime date;
-            string isHosp;
-            string isDead;
-
-            public OthotVrach()
-            {
-
-            }
-            public OthotVrach(int id, int id_vizov,DateTime date, bool isHosp, bool isDead)
-            {
-                this.id = id;
-                this.id_vizov = id_vizov;
-                this.date = date;
-                if (isHosp)
-                {
-                    this.isHosp = "Госпиталезирован";
-                }
-                else
-                {
-                    this.isHosp = "Не госпиталезирован";
-                }
-                if (isDead)
-                {
-                    this.isDead = "Умер";
-                }
-                else
-                {
-                    this.isDead = "Выжил";
-                }
-            }
         }
     }
 }
